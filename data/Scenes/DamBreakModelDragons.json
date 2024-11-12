@@ -1,10 +1,10 @@
 {
 	"Configuration": 
 	{
-		"particleRadius": 0.025,
+		"particleRadius": 0.04,
 		"numberOfStepsPerRenderUpdate": 2,
-		"density0": 1000, 
-		"simulationMethod": 4,
+		"density0": 1, 
+		"simulationMethod": 3,
 		"gravitation": [0,-9.81,0], 
 		"cflMethod": 1, 
 		"cflFactor": 1,
@@ -17,7 +17,8 @@
 		"exponent": 7,
 		"velocityUpdateMethod": 0,
 		"enableDivergenceSolver": true,
-		"boundaryHandlingMethod": 2
+		"boundaryHandlingMethod": 0,
+		"enableZSort": false
 	},
 	"Materials": [
 		{

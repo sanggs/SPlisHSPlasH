@@ -59,22 +59,12 @@ class CustomExporter(sph.ExporterBase):
 def main():
     base = sph.Exec.SimulatorBase()
     
-    exporter = CustomExporter(base)
-    base.addRigidBodyExporter("enableCustomExporter", "Custom Exporter", "Enable/disable custom export.", exporter)
-
     base.init(sys.argv, "[Python] SPlisHSPlasH")
 
     gui = sph.GUI.Simulator_GUI_imgui(base)
     base.setGui(gui)
     
-    base.activateExporter("Custom Exporter", True)	
-    
-    print ("Active rigid body exporters: ")
-    exporters = base.getRigidBodyExporters()
-    for ex in exporters:
-        if ex.exporter.getActive():
-            print (ex.name)
-    print("")
+    base.activateExporter("NPY Exporter", True)	
         
     # init the simulation
     base.initSimulation()

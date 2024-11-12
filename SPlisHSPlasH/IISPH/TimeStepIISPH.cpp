@@ -77,7 +77,7 @@ void TimeStepIISPH::step()
 
 	sim->computeNonPressureForces();
 
-	sim->updateTimeStepSize();
+	// sim->updateTimeStepSize();
 
 	// Solve density constraint	
 	START_TIMING("predictAdvection");

@@ -2,12 +2,15 @@
 	"Configuration": 
 	{
 		"pause": true,
-		"sim2D": true, 
-		"particleRadius": 0.025,
+		"sim2D": true,
+	    "pauseAt": 1.0,
+		"stopAt": 1.0,	
+		"timeStepSize": 0.001,
+		"particleRadius": 0.010,
 		"colorMapType": 1,
-		"numberOfStepsPerRenderUpdate": 4,
-		"density0": 1000, 
-		"simulationMethod": 4,
+		"numberOfStepsPerRenderUpdate": 1,
+		"density0": 1, 
+		"simulationMethod": 3,
 		"gravitation": [0,-9.81,0], 
 		"cflMethod": 1, 
 		"cflFactor": 1,
@@ -20,7 +23,8 @@
 		"exponent": 7,
 		"velocityUpdateMethod": 0,
 		"enableDivergenceSolver": true,
-		"boundaryHandlingMethod": 2
+		"boundaryHandlingMethod": 0,
+		"enableZSort": false
 	},
 	"Materials": [
 		{

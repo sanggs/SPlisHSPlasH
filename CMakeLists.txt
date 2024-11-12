@@ -46,6 +46,8 @@ add_definitions(-DEIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT)
 ################################################################################
 include(SetUpExternalProjects)
 
+include_directories(extern/libnpy/include/)
+
 ################################################################################
 # internal libraries
 ################################################################################

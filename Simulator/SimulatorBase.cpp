@@ -1576,19 +1576,29 @@ void SimulatorBase::particleInfo(std::vector<std::vector<unsigned int>> &particl
 
 void SimulatorBase::step()
 {
-	if (TimeManager::getCurrent()->getTime() >= m_nextFrameTime)
+	for (size_t i = 0; i < m_particleExporters.size(); i++)
 	{
-		m_nextFrameTime += static_cast<Real>(1.0) / m_framesPerSecond;
-
-		for (size_t i = 0; i < m_particleExporters.size(); i++)
-		{
-			m_particleExporters[i].m_exporter->step(m_frameCounter);
-		}
-		for (size_t i = 0; i < m_rbExporters.size(); i++)
-			m_rbExporters[i].m_exporter->step(m_frameCounter);
-
-		m_frameCounter++;
+		m_particleExporters[i].m_exporter->step(m_frameCounter);
 	}
+	for (size_t i = 0; i < m_rbExporters.size(); i++)
+		m_rbExporters[i].m_exporter->step(m_frameCounter);
+
+	m_frameCounter++;
+
+
+	// if (TimeManager::getCurrent()->getTime() >= m_nextFrameTime)
+	// {
+	// 	m_nextFrameTime += static_cast<Real>(1.0) / m_framesPerSecond;
+
+	// 	for (size_t i = 0; i < m_particleExporters.size(); i++)
+	// 	{
+	// 		m_particleExporters[i].m_exporter->step(m_frameCounter);
+	// 	}
+	// 	for (size_t i = 0; i < m_rbExporters.size(); i++)
+	// 		m_rbExporters[i].m_exporter->step(m_frameCounter);
+
+	// 	m_frameCounter++;
+	// }
 	if (TimeManager::getCurrent()->getTime() >= m_nextFrameTimeState)
 	{
 		m_nextFrameTimeState += static_cast<Real>(1.0) / m_framesPerSecondState;
