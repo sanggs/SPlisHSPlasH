@@ -1,0 +1,77 @@
+{
+	"Configuration": 
+	{
+		"particleRadius": 0.02,
+		"numberOfStepsPerRenderUpdate": 2,
+		"density0": 1000, 
+		"simulationMethod": 4,
+		"gravitation": [0,-9.81,0], 
+		"cflMethod": 1, 
+		"cflFactor": 0.5,
+		"cflMaxTimeStepSize": 0.005,
+		"maxIterations": 100,
+		"maxError": 0.05,
+		"maxIterationsV": 100,
+		"maxErrorV": 0.1,		
+		"stiffness": 50000,
+		"exponent": 7,
+		"velocityUpdateMethod": 0,
+		"enableDivergenceSolver": true,
+		"boundaryHandlingMethod": 2
+	},
+	"Simulation": 
+	{
+		"timeStepSize": 0.001,
+		"maxIter" : 5,
+		"maxIterVel" : 5,
+		"velocityUpdateMethod" : 0
+	},
+	"RigidBodies": [
+		{
+			"id": 1,
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [0,4,0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [3.1, 8, 1.6],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": true,
+			"restitution" : 0.6,
+			"friction" : 0.0,
+			"collisionObjectType": 2,
+			"collisionObjectScale": [3.1, 8, 1.6],	
+			"invertSDF": true,
+			"mapInvert": true, 
+			"mapThickness": 0.0,
+			"mapResolution": [30,40,15]
+		},
+		{
+			"id": 2,
+			"geometryFile": "../models/UnitBox.obj",
+			"translation": [1, 0.5, 0],
+			"rotationAxis": [1, 0, 0],
+			"rotationAngle": 0,
+			"scale": [0.5, 0.5, 0.5],
+			"color": [0.1, 0.4, 0.6, 1.0], 
+			"isDynamic": false,
+			"isWall": false,
+			"invertSDF": true,
+			"mapInvert": true, 
+			"mapThickness": 0.0,
+			"mapResolution": [20,20,20]
+		}
+	],
+	"FluidBlocks": [
+		{
+			"denseMode": 0,
+			"start": [-0.75, 0.0, -0.75],
+			"end": [0.75, 1.5, 0.75],
+			"translation": [-0.75, 0.0, 0.0],
+			"scale": [1,1,1]
+		}
+	]	
+}
+
+
+
