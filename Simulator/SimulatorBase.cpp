@@ -1338,10 +1338,11 @@ void SimulatorBase::createEmitters()
 			if (sim->is2DSimulation())
 				emitterBoundary->scale[2] = 2 * supportRadius;
 
+			std::string prefix_path = "/home/sangeetha/projects/SPlisHSPlasH/data";
 			if (ed->type == 0)
-				emitterBoundary->meshFile = FileSystem::normalizePath(getExePath() + "/resources/emitter_boundary/EmitterBox.obj");
+				emitterBoundary->meshFile = FileSystem::normalizePath(prefix_path + "/emitter_boundary/EmitterBox.obj");
 			else if (ed->type == 1)
-				emitterBoundary->meshFile = FileSystem::normalizePath(getExePath() + "/resources/emitter_boundary/EmitterCylinder.obj");
+				emitterBoundary->meshFile = FileSystem::normalizePath(prefix_path + "/emitter_boundary/EmitterCylinder.obj");
 			scene.boundaryModels.push_back(emitterBoundary);
 			
 			// reuse particles if they are outside of a bounding box

@@ -3,7 +3,7 @@ import argparse
 from argparse import RawTextHelpFormatter
 
 def main():
-
+	print(f'Calling SPHSimulator')
 	parser = argparse.ArgumentParser(description='SPlisHSPlasH', formatter_class=RawTextHelpFormatter)
 	parser.add_argument('scene', type=str, help='scene file')
 	parser.add_argument('--no-cache', action='store_true', help=

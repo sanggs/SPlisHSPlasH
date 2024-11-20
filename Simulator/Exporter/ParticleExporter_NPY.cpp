@@ -51,18 +51,18 @@ void ParticleExporter_NPY::step(const unsigned int frame)
         
         Real particle_radius = sim->getParticleRadius();
 		std::string fileName = "Particle";
-		if (!m_base->getValue<bool>(SimulatorBase::EXPORT_OBJECT_SPLITTING))
-		{
+		// if (!m_base->getValue<bool>(SimulatorBase::EXPORT_OBJECT_SPLITTING))
+		// {
             
 			fileName = fileName + "_" + model->getId() + "_" + frame_string;
 			std::string exportFileName = FileSystem::normalizePath(m_exportPath + "/" + fileName);
 			writeParticles(exportFileName + ".npy", model);
-		}
-		else
-		{
-			std::cout << "Error! Not Implemented error" << std::endl;
-            std::exit(0);
-		}
+		// }
+		// else
+		// {
+		// 	std::cout << "Error! Not Implemented error" << std::endl;
+        //     std::exit(0);
+		// }
 	}
 
     for (unsigned int i = 0; i < sim->numberOfBoundaryModels(); i++) 
@@ -95,6 +95,10 @@ void ParticleExporter_NPY::createParticleFile(const std::string& fileName, Fluid
 void ParticleExporter_NPY::writeParticles(const std::string& fileName, FluidModel* model)
 {
 	const unsigned int numParticles = model->numActiveParticles();
+    if (numParticles == 0)
+    {
+        return;
+    }
     const unsigned int offset = 12;
     // pos, vel, acc_v, acc_p, mass, volume, density, density advected, aii, pressure
 
