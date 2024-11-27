@@ -75,6 +75,8 @@ void StaticBoundarySimulator::initBoundaryData()
 				std::string mesh_base_path = FileSystem::getFilePath(scene.boundaryModels[i]->meshFile);
 				std::string mesh_file_name = FileSystem::getFileName(scene.boundaryModels[i]->meshFile);
 
+				const Real boundarySamplingRadius = std::min(0.5 * scene.particleRadius, 0.01);
+
 				const string resStr = StringTools::real2String(scene.boundaryModels[i]->scale[0]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[1]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[2]);
 				const string modeStr = "_m" + std::to_string(scene.boundaryModels[i]->samplingMode);
 				const string particleFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_sb_" + StringTools::real2String(scene.particleRadius) + "_" + resStr + modeStr + ".bgeo");
@@ -100,7 +102,7 @@ void StaticBoundarySimulator::initBoundaryData()
 							LOG_INFO << "Poisson disk surface sampling of " << meshFileName;
 							START_TIMING("Poisson disk sampling");
 							PoissonDiskSampling sampling;
-							sampling.sampleMesh(geo.numVertices(), geo.getVertices().data(), geo.numFaces(), geo.getFaces().data(), scene.particleRadius, 10, 1, boundaryParticles);
+							sampling.sampleMesh(geo.numVertices(), geo.getVertices().data(), geo.numFaces(), geo.getFaces().data(), boundarySamplingRadius, 10, 1, boundaryParticles);
 							STOP_TIMING_AVG;
 						};
 						const auto sampleRegularTriangle = [&]()
@@ -108,7 +110,7 @@ void StaticBoundarySimulator::initBoundaryData()
 							LOG_INFO << "Regular triangle surface sampling of " << meshFileName;
 							START_TIMING("Regular triangle sampling");
 							RegularTriangleSampling sampling;
-							sampling.sampleMesh(geo.numVertices(), geo.getVertices().data(), geo.numFaces(), geo.getFaces().data(), 1.5f * scene.particleRadius, boundaryParticles);
+							sampling.sampleMesh(geo.numVertices(), geo.getVertices().data(), geo.numFaces(), geo.getFaces().data(), 1.5f * boundarySamplingRadius, boundaryParticles);
 							STOP_TIMING_AVG;
 						};
 						if (SurfaceSamplingMode::PoissonDisk == scene.boundaryModels[i]->samplingMode)

@@ -1,9 +1,12 @@
 {
 	"Configuration": 
 	{
-		"particleRadius": 0.04,
+		"particleRadius": 0.02,
+		"stopAt": 3.0,
+		"dataExportFPS": 25.0,
+		"timeStepSize": 0.001,
 		"numberOfStepsPerRenderUpdate": 2,
-		"density0": 1, 
+		"density0": 1.0, 
 		"simulationMethod": 3,
 		"gravitation": [0,-9.81,0], 
 		"cflMethod": 1, 

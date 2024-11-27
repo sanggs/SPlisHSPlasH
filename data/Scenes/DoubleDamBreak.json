@@ -3,10 +3,12 @@
 	{
 		"cameraPosition": [0,2,5],
 		"cameraLookat": [0,0,0],
-		"particleRadius": 0.025,
+		"particleRadius": 0.02,
+		"stopAt" : 3.0,
+		"dataExportFPS": 25.0,
 		"numberOfStepsPerRenderUpdate": 4,
 		"density0": 1000, 
-		"simulationMethod": 4,
+		"simulationMethod": 3,
 		"gravitation": [0,-9.81,0], 
 		"cflMethod": 1, 
 		"cflFactor": 1,
@@ -19,7 +21,7 @@
 		"exponent": 7,
 		"velocityUpdateMethod": 0,
 		"enableDivergenceSolver": true,
-		"boundaryHandlingMethod": 2
+		"boundaryHandlingMethod": 0
 	},
 	"Materials": [
 		{
