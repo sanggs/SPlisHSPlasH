@@ -20,7 +20,6 @@ namespace SPH
         unsigned int m_numFields;
 
 
-
 		void createParticleFile(const std::string& fileName, FluidModel* model);
 		void writeParticles(const std::string& fileName, FluidModel* model);
 		void writeBoundaryParticles(const std::string& fileName, BoundaryModel* model);
