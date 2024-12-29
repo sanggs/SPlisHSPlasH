@@ -25,9 +25,11 @@
 	"Materials": [
 		{
 			"id": "Fluid",
+			"density0": 1000.0,
+			"surfaceTension": 0.0,
+			"surfaceTensionMethod": 0,
 			"viscosity": 0.01,
-			"viscosityMethod": 1, 
-			"colorMapType": 1
+			"viscosityMethod": 1
 		}
 	],
 	"RigidBodies": [
@@ -40,6 +42,7 @@
 			"color": [0.1, 0.4, 0.6, 1.0], 
 			"isDynamic": false,
 			"isWall": true,
+			"invertSDF" : true,
 			"mapInvert": true, 
 			"mapThickness": 0.0,
 			"mapResolution": [40,30,20]

@@ -14,7 +14,7 @@ ParticleExporter_NPY::ParticleExporter_NPY(SimulatorBase *base) :
 	m_outfile = nullptr;
     Simulation* sim = Simulation::getCurrent();
     m_sim2D = sim->is2DSimulation();
-    m_numFields = 3 + 3 + 1 + 1;
+    m_numFields = 3 + 3 + 3 + 3 + 1 + 1;
 }
 
 ParticleExporter_NPY::~ParticleExporter_NPY(void)
@@ -99,21 +99,21 @@ void ParticleExporter_NPY::writeParticles(const std::string& fileName, FluidMode
     {
         return;
     }
-    const unsigned int offset = 6;
+    const unsigned int offset = 12;
     // pos, vel, acc_v, acc_p, mass, volume, density, density advected, aii, pressure
 
     Real* data = (Real *) std::malloc(sizeof(Real) * numParticles * m_numFields);
 
     // const FieldDescription& aiiField                    = model->getField("a_ii");
     // const FieldDescription& pressureField               = model->getField("pressure");
-    // const FieldDescription& pressureAccelerationField   = model->getField("pressure_acceleration");
+    const FieldDescription& pressureAccelerationField   = model->getField("pressure_acceleration");
     // const FieldDescription& densityAdvectedField        = model->getField("advected density");
 
     for (int i = 0; i < numParticles; i++) {
         const auto& pos_i       = model->getPosition(i);
         const auto& vel_i       = model->getVelocity(i);
-        // const auto& acc_v_i     = model->getAcceleration(i);
-        // Vector3r acc_p_i((Real*)pressureAccelerationField.getFct(i));
+        const auto& acc_v_i     = model->getAcceleration(i);
+        Vector3r acc_p_i((Real*)pressureAccelerationField.getFct(i));
         
         const auto& mass_i      = model->getMass(i);
         // const auto& volume_i    = model->getVolume(i);
@@ -125,8 +125,8 @@ void ParticleExporter_NPY::writeParticles(const std::string& fileName, FluidMode
         for (int j = 0; j < 3; j++) {
             data[i * m_numFields + j + 0] = pos_i[j];
             data[i * m_numFields + j + 3] = vel_i[j];
-            // data[i * m_numFields + j + 6] = acc_v_i[j];
-            // data[i * m_numFields + j + 9] = acc_p_i[j];
+            data[i * m_numFields + j + 6] = acc_v_i[j];
+            data[i * m_numFields + j + 9] = acc_p_i[j];
         }
         
         data[i * m_numFields + offset + 0] = mass_i;
