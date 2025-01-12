@@ -69,8 +69,8 @@ def main():
         
     # init the simulation
     base.initSimulation()
-
-    base.runSimulation()
+    
+    # base.runSimulation()
 
     export_info = {}
     sim = sph.Simulation.getCurrent()
@@ -91,15 +91,24 @@ def main():
     global_min = None
     global_max = None
 
+    boundary_mesh_list      = []
+    boundary_particle_list  = []
+    print(f'number of boundary models = {nBoundaryModels}')
     for i in range(0, nBoundaryModels):
         bm = sim.getBoundaryModel(i)
         bp_num = bm.numberOfParticles()
+        rbo = bm.getRigidBodyObject()
+        vertices = np.array(rbo.getVertexBuffer(), dtype=np.float32, copy=False)
+        faces = np.array(rbo.getFaceBuffer(), dtype=np.int32, copy=False)
+        tris = faces.reshape((-1,3))
+        # boundary_mesh_list.append((vertices.tolist(), faces.tolist()))
 
         particles = []
         for j in range(bp_num):
             particles.append(bm.getPosition(j))
         
         particles = np.array(particles)
+        boundary_particle_list.append(particles.tolist())
 
         if (global_min is None):
             global_min = np.min(particles, axis=0)
@@ -120,6 +129,8 @@ def main():
     export_info['folder_name'] = f'npy_{pr_str}'
     export_info['particle_radius'] = float(f'{pr_str}')
     export_info['bounds'] = [global_min.tolist(), global_max.tolist()]
+    export_info['boundary_particle_list'] = boundary_particle_list
+    # export_info['boundary_mesh_list']     = boundary_mesh_list
     
     info_file = os.path.join(output_path, scene_file_name)
     info_file = os.path.join(info_file, f'info_{pr_str}.json')

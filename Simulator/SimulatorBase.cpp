@@ -529,10 +529,13 @@ void SimulatorBase::initSimulation()
 			});
 	}
 	updateScalarField();
+	std::cout << "Calling deferred init()" << std::endl;
+	deferredInit();
 }
 
 void SimulatorBase::deferredInit()
 {
+	std::cout << "Calling deferred init()" << std::endl;
 	m_boundarySimulator->initBoundaryData();
 
 	Simulation* sim = Simulation::getCurrent();
