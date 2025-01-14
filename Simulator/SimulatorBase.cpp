@@ -529,8 +529,6 @@ void SimulatorBase::initSimulation()
 			});
 	}
 	updateScalarField();
-	std::cout << "Calling deferred init()" << std::endl;
-	deferredInit();
 }
 
 void SimulatorBase::deferredInit()

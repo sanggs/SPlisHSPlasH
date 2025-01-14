@@ -1,7 +1,7 @@
 {
 	"Configuration": 
 	{
-		"particleRadius": 0.01,
+		"particleRadius": 0.04,
 		"stopAt": 4.0,
 		"density0": 1000.0, 
 		"timeStepSize": 0.001,
@@ -44,10 +44,10 @@
 		{
 			"id": 1,
 			"geometryFile": "../models/UnitBox.obj",
-			"translation": [0,4,0],
+			"translation": [0,2,0],
 			"rotationAxis": [1, 0, 0],
 			"rotationAngle": 0,
-			"scale": [2.1, 8, 1.6],
+			"scale": [2.1, 4, 1.6],
 			"color": [0.1, 0.4, 0.6, 1.0], 
 			"isDynamic": false,
 			"isWall": true,	
@@ -59,10 +59,10 @@
 		{
 			"id": 2,
 			"geometryFile": "../models/sphere.obj",
-			"translation": [0.5, 0.4, 0],
+			"translation": [0.5, 0.6, 0],
 			"rotationAxis": [0, 0, 1],
 			"rotationAngle":1,
-			"scale": [0.4, 0.4, 0.4],
+			"scale": [0.3, 0.3, 0.3],
 			"color": [0.1, 0.4, 0.6, 1.0], 
 			"isDynamic": false,
 			"isWall": false,
